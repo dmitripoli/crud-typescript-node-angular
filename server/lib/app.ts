@@ -4,7 +4,7 @@ import * as mongoose from "mongoose";
 import { Routes } from "./routes/crmRoutes";
 import * as path from "path";
 import { Request, Response } from "express";
-import * as mime from "mime";
+var mime = require("mime-types");
 
 class App {
   public app: express.Application;
@@ -44,7 +44,7 @@ class App {
     this.app.use(
       express.static(path.join(__dirname, "../build"), {
         setHeaders: (res, path) => {
-          if (mime.getType(path) !== "text/html") {
+          if (mime.lookup(path) !== "text/html") {
             res.setHeader("Cache-Control", "public, max-age=86400, immutable");
           }
         }

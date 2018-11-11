@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const crmRoutes_1 = require("./routes/crmRoutes");
 const path = require("path");
-const mime = require("mime");
+var mime = require("mime-types");
 class App {
     constructor() {
         this.routePrv = new crmRoutes_1.Routes();
@@ -32,7 +32,7 @@ class App {
         //Point static path to dist
         this.app.use(express.static(path.join(__dirname, "../build"), {
             setHeaders: (res, path) => {
-                if (mime.getType(path) !== "text/html") {
+                if (mime.lookup(path) !== "text/html") {
                     res.setHeader("Cache-Control", "public, max-age=86400, immutable");
                 }
             }
