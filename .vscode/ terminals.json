@@ -1,0 +1,17 @@
+{
+  "autorun": true,
+  "terminals": [
+    {
+      "name": "client",
+      "description": "A terminal runs sclient",
+      "commands": ["cd client", "ng serve"],
+      "execute": true
+    },
+    {
+      "name": "server",
+      "description": "A terminal runs sclient",
+      "commands": ["cd typescript-node-api", "npm  start"],
+      "execute": true
+    }
+  ]
+}
